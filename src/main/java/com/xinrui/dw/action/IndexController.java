@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +24,9 @@ import com.xinrui.dw.service.impl.FilmInfoServiceImpl;
 @Controller
 public class IndexController
 {
+
+	public static Logger logger = Logger.getLogger(IndexController.class);
+
 	@Resource
 	FilmInfoServiceImpl filmService;
 
@@ -33,8 +37,10 @@ public class IndexController
 		List<FilmInfo> infos = filmService.queryAllFilmInfo();
 		for (FilmInfo filmInfo : infos)
 		{
-			System.out.println(filmInfo.toString());
+			logger.info(filmInfo.toString());
 		}
+		mav.addObject("infos", infos);
+		
 		return mav;
 	}
 
