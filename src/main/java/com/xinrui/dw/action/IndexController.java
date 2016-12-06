@@ -4,14 +4,18 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xinrui.dw.bean.FilmInfo;
 import com.xinrui.dw.service.impl.FilmInfoServiceImpl;
+import com.xinrui.dw.bean.PageParam;
+import com.xinrui.dw.util.PageparmUtil;
 
 /**
  * 
@@ -25,22 +29,26 @@ import com.xinrui.dw.service.impl.FilmInfoServiceImpl;
 public class IndexController
 {
 
-	public static Logger logger = Logger.getLogger(IndexController.class);
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Resource
 	FilmInfoServiceImpl filmService;
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView index()
+	@RequestMapping(value = "/index/{currentPage}", method = RequestMethod.GET)
+	public ModelAndView index(@PathVariable String currentPage)
 	{
 		ModelAndView mav = new ModelAndView("frame/index");
-		List<FilmInfo> infos = filmService.queryAllFilmInfo();
+		// 设置并过滤页数
+		PageParam page = PageparmUtil.setCurrentPage(currentPage);
+		// 查询数据
+		List<FilmInfo> infos = filmService.queryAllFilmInfoByPage(page);
 		for (FilmInfo filmInfo : infos)
 		{
 			logger.info(filmInfo.toString());
 		}
+		// 向页面返回数据
 		mav.addObject("infos", infos);
-		
+		mav.addObject("page", page);
 		return mav;
 	}
 

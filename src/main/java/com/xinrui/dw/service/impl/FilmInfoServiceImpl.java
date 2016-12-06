@@ -1,19 +1,17 @@
 package com.xinrui.dw.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
-
-
-
-
-
 
 import org.springframework.stereotype.Service;
 
 import com.xinrui.dw.bean.FilmInfo;
 import com.xinrui.dw.dao.IFilmInfoDao;
 import com.xinrui.dw.service.IFilmInfoService;
+import com.xinrui.dw.bean.PageParam;
 
 /**
  * 
@@ -29,9 +27,11 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 	@Resource
 	IFilmInfoDao filmInfoDao;
 
-	public List<FilmInfo> queryAllFilmInfo()
+	public List<FilmInfo> queryAllFilmInfoByPage(PageParam pageParam)
 	{
-		return this.filmInfoDao.queryAllFilmInfo();
+		Map<String, Object> parameter = new HashMap<String, Object>();
+		parameter.put("pageParam", pageParam);
+		return this.filmInfoDao.queryAllFilmInfoByPage(parameter);
 	}
 
 }

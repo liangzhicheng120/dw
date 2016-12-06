@@ -1,6 +1,7 @@
 package com.xinrui.dw.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +18,7 @@ import com.xinrui.dw.bean.FilmInfo;
 @Repository
 public interface IFilmInfoDao
 {
-	// 查询所有影视剧信息
-	public List<FilmInfo> queryAllFilmInfo();
+	// 分页查询所有影视剧信息
+	public List<FilmInfo> queryAllFilmInfoByPage(Map<String, Object> parameter);
 
 }

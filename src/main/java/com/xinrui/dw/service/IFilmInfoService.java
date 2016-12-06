@@ -3,6 +3,7 @@ package com.xinrui.dw.service;
 import java.util.List;
 
 import com.xinrui.dw.bean.FilmInfo;
+import com.xinrui.dw.bean.PageParam;
 
 /**
  * 
@@ -14,6 +15,6 @@ import com.xinrui.dw.bean.FilmInfo;
  */
 public interface IFilmInfoService
 {
-	// 查询所有影视信息
-	public List<FilmInfo> queryAllFilmInfo();
+	// 分页查询所有影视信息
+	public List<FilmInfo> queryAllFilmInfoByPage(PageParam pageParam);
 }
