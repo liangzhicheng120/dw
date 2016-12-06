@@ -13,7 +13,7 @@ public class Constant
 
 	// 存放pyhton 执行器地址
 	public static final String BASEDIR = "D:\\software\\work\\Python27\\python.exe";
-	// 执行聚类python脚本地址
+	// 执行聚类脚本地址
 	public static final String CLUSTERPATH = "D:\\workspace\\eclipse-workspace\\demoweb\\src\\test\\java\\python\\cluster.py";
 
 }
