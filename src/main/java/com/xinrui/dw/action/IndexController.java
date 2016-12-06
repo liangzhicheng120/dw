@@ -34,8 +34,8 @@ public class IndexController
 	@Resource
 	FilmInfoServiceImpl filmService;
 
-	@RequestMapping(value = "/index/{currentPage}", method = RequestMethod.GET)
-	public ModelAndView index(@PathVariable String currentPage)
+	@RequestMapping(value = "/index")
+	public ModelAndView index(String currentPage)
 	{
 		ModelAndView mav = new ModelAndView("frame/index");
 		// 设置并过滤页数

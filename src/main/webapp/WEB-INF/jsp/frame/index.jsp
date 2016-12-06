@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>后台登陆</title>
+<title>聚类展示平台</title>
 <%@include file="../common/head.jsp"%>
 </head>
 <body>
@@ -48,39 +48,37 @@
 										</c:forEach>
 									</tbody>
 								</table>
-							</div>
-
-							<div class="col-md-12">
-								<div class="col-md-6">
-									<c:if test="${page.totalNumber != 0 }">
-										<div class="dataTables_info">共查询到${page.totalNumber }条记录,当前为第${page.currentPage }/${page.totalPage }页</div>
-									</c:if>
-									<c:if test="${page.totalNumber == 0 }">
-										<div class="dataTables_info">共查询到0条记录,当前为第0/0页</div>
-									</c:if>
-								</div>
-
-								<div class="col-md-offset-8" style="margin-top: -28px;">
-									<div>
-										<ul class="pagination">
-											<c:if test="${page.currentPage != 1 }">
-												<li><a href="javascript:changeCurrentPage(1)">首页</a></li>
-												<li><a href="javascript:changeCurrentPage(${page.currentPage-1 })">上一页</a></li>
-											</c:if>
-											<c:if test="${page.currentPage == 1 }">
-												<li class="disabled"><a href="javascript:void(0)">首页</a></li>
-												<li class="disabled"><a href="javascript:void(0)">上一页</a></li>
-											</c:if>
-											<li class="disabled"><a>${page.currentPage }/${page.totalPage }</a></li>
-											<c:if test="${page.currentPage != page.totalPage }">
-												<li><a href="javascript:changeCurrentPage(${page.currentPage+1 })">下一页</a></li>
-												<li><a href="javascript:changeCurrentPage(${page.totalPage })">末页</a></li>
-											</c:if>
-											<c:if test="${page.currentPage == page.totalPage }">
-												<li class="disabled"><a href="javascript:void(0)">下一页</a></li>
-												<li class="disabled"><a href="javascript:void(0)">末页</a></li>
-											</c:if>
-										</ul>
+								<div class="pageFooter">
+									<div class="col-md-12">
+										<c:if test="${page.totalNumber != 0 }">
+											<div class="dataTables_info">共查询到${page.totalNumber }条记录,当前为第${page.currentPage }/${page.totalPage }页</div>
+										</c:if>
+										<c:if test="${page.totalNumber == 0 }">
+											<div class="dataTables_info">共查询到0条记录,当前为第0/0页</div>
+										</c:if>
+									</div>
+									<div class="col-md-12 center-block">
+										<div class="dataTables_paginate paging_bootstrap pagination">
+											<ul class="pagination">
+												<c:if test="${page.currentPage != 1 }">
+													<li><a href="javascript:changeCurrentPage(1)">首页</a></li>
+													<li><a href="javascript:changeCurrentPage(${page.currentPage-1 })">上一页</a></li>
+												</c:if>
+												<c:if test="${page.currentPage == 1 }">
+													<li class="disabled"><a href="javascript:void(0)">首页</a></li>
+													<li class="disabled"><a href="javascript:void(0)">上一页</a></li>
+												</c:if>
+												<li class="disabled"><a>${page.currentPage }/${page.totalPage }</a></li>
+												<c:if test="${page.currentPage != page.totalPage }">
+													<li><a href="javascript:changeCurrentPage(${page.currentPage+1 })">下一页</a></li>
+													<li><a href="javascript:changeCurrentPage(${page.totalPage })">末页</a></li>
+												</c:if>
+												<c:if test="${page.currentPage == page.totalPage }">
+													<li class="disabled"><a href="javascript:void(0)">下一页</a></li>
+													<li class="disabled"><a href="javascript:void(0)">末页</a></li>
+												</c:if>
+											</ul>
+										</div>
 									</div>
 								</div>
 							</div>
