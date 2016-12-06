@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xinrui.dw.bean.FilmInfo;
@@ -24,6 +25,7 @@ import com.xinrui.dw.util.PageparmUtil;
  *
  */
 @Controller
+@RequestMapping(value = "/index")
 public class IndexController
 {
 
@@ -32,7 +34,7 @@ public class IndexController
 	@Resource
 	FilmInfoServiceImpl filmService;
 
-	@RequestMapping(value = "/index")
+	@RequestMapping(value = "")
 	public ModelAndView index(String currentPage)
 	{
 		ModelAndView mav = new ModelAndView("frame/index");
@@ -40,13 +42,18 @@ public class IndexController
 		PageParam page = PageparmUtil.setCurrentPage(currentPage);
 		// 查询数据
 		List<FilmInfo> infos = filmService.queryAllFilmInfoByPage(page);
-		for (FilmInfo filmInfo : infos)
-		{
-			logger.info(filmInfo.toString());
-		}
+
 		// 向页面返回数据
 		mav.addObject("infos", infos);
 		mav.addObject("page", page);
+		return mav;
+	}
+
+	@RequestMapping(value = "/deleteByFilmId", method = RequestMethod.POST)
+	public ModelAndView deleteByFilmId(String filmId)
+	{
+		ModelAndView mav = new ModelAndView("forward:index");
+		System.out.println(filmId);
 		return mav;
 	}
 

@@ -30,7 +30,7 @@ public class PythonUtil
 			while ((line = in.readLine()) != null)
 			{
 				line = new String(line.getBytes("gbk"), "utf-8");
-				System.out.println(line);
+//				System.out.println(line);
 			}
 			return true;
 		} catch (IOException e)

@@ -2,32 +2,31 @@ var index =
 {
 	url : function()
 	{
-		return '/index.html'
+		return '/demoweb/index/deleteByFilmId'
+	},
+	deleteByFilmId : function(filmId)
+	{
+		$.ajax(
+		{
+			dataType : "json",
+			type : "POST",
+			url : index.url (),
+			data :
+			{
+				filmId : filmId
+			},
+			success : function(data)
+			{
+				console.log(data)
+			},
+			error : function(er)
+			{
+				console.log(er)
+			},
+		});
 	},
 	init : function()
 	{
-		$('#deleteBtn').click(function()
-		{
-			console.log('deleteBtn')
-			// $.ajax(
-			// {
-			// dataType : "json",
-			// type : "POST",
-			// url : "userFamily.html",
-			// data :
-			// {
-			// family : family
-			// },
-			// success : function(familyMsg)
-			// {
-			// userFunction.showModal('#showUserFamily', familyMsg);
-			// },
-			// error : function(er)
-			// {
-			// showTipError(er);
-			// },
-			// });
-		})
 
 	}
 }
