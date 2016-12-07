@@ -22,6 +22,13 @@ public class Url
 		this.message = message;
 	}
 
+	public Url(int code, String message)
+	{
+		super();
+		this.code = code;
+		this.message = message;
+	}
+
 	public Url(String url, int code)
 	{
 		super();

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xinrui.dw.dao.IFilmInfoDao">
-	<select id="queryAllFilmInfoByPage" resultType="com.xinrui.dw.bean.FilmInfo">
+	<select id="queryAllFilmInfoByPage" resultType="FilmInfo">
 		SELECT
 		filmId,
 		filmName,
@@ -14,4 +14,11 @@
 		FROM
 		mydemo.recsys
 	</select>
+
+	<delete id="deleteByFilmId" parameterType="FilmInfo">
+		DELETE FROM
+		mydemo.recsys
+		WHERE
+		filmId = #{filmId}
+	</delete>
 </mapper>

@@ -61,7 +61,7 @@ public class PageIntercetor implements Interceptor
 			String sql = boundSql.getSql();
 
 			// 查询总条数的SQL语句
-			String countSql = "select count(*) from (" + sql + ")a";
+			String countSql = "SELECT count(*) FROM (" + sql + ")a";
 
 			Connection connection = (Connection) invocation.getArgs()[0];
 			PreparedStatement countStatement = connection.prepareStatement(countSql);

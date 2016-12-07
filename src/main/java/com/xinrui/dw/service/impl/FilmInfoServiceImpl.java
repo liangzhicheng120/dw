@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.python.modules.newmodule;
 import org.springframework.stereotype.Service;
 
@@ -40,4 +41,21 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 		return filmInfos;
 	}
 
+	// 根据影视剧id删除信息
+	public boolean deleteByFilmId(String filmId)
+	{
+		if (StringUtils.isNotEmpty(filmId))
+		{
+			FilmInfo filmInfo = new FilmInfo();
+			filmInfo.setFilmId(Integer.valueOf(filmId));
+			int row = this.filmInfoDao.deleteByFilmId(filmInfo);
+			// 删除成功
+			if (row > 0)
+			{
+				return true;
+			}
+		}
+		// 删除失败
+		return false;
+	}
 }

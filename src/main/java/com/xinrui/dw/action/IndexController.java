@@ -1,11 +1,9 @@
 package com.xinrui.dw.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.python.modules.newmodule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -58,9 +56,19 @@ public class IndexController
 	@ResponseBody
 	public ExecutionResult<Url> deleteByFilmId(String filmId)
 	{
-		logger.info("filmId={}", filmId);
-		Url url = new Url(UrlUtil.INDEX, 200);
-		return new ExecutionResult<Url>(true, url);
+		boolean isDelete = filmService.deleteByFilmId(filmId);
+		Url url = null;
+		// É¾³ý³É¹¦
+		if (isDelete)
+		{
+			url = new Url(UrlUtil.INDEX, 200);
+			return new ExecutionResult<Url>(true, url);
+		} else
+		// É¾³ýÊ§°Ü
+		{
+			url = new Url(500, "DELETE FAIL");
+			return new ExecutionResult<Url>(false, url);
+		}
 	}
 
 }

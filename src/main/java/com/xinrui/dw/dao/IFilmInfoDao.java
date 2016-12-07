@@ -21,4 +21,7 @@ public interface IFilmInfoDao
 	// 分页查询所有影视剧信息
 	public List<FilmInfo> queryAllFilmInfoByPage(Map<String, Object> parameter);
 
+	// 根据影视剧id杀出信息
+	public int deleteByFilmId(FilmInfo filmInfo);
+
 }

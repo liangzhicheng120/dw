@@ -1,34 +1,38 @@
 var index =
 {
-	url : function()
+	url :
 	{
-		return '/demoweb/index/deleteByFilmId'
+		index : function()
+		{
+			return '/demoweb/index'
+		},
+		deleteByFilmId : function()
+		{
+			return '/demoweb/index/deleteByFilmId'
+		}
 	},
-	deleteByFilmId : function(filmId)
+	showDeleteDia : function(dialogId)
+	{
+		common.pushDiaVal(dialogId, new Array('filmid'))
+	},
+	deleteByFilmId : function()
 	{
 		$.ajax(
 		{
 			dataType : "json",
 			type : "POST",
-			url : index.url(),
+			url : index.url.deleteByFilmId(),
 			data :
 			{
-				filmId : filmId
+				filmId : $('#filmid').text()
 			},
 			success : function(result)
 			{
-				console.log(result.data.url)
-				console.log(result.data.code)
-				console.log(result.data.message)
-			},
-			error : function(er)
-			{
-				console.log(er)
+				console.log(result.data)
 			},
 		});
 	},
 	init : function()
 	{
-
 	}
 }

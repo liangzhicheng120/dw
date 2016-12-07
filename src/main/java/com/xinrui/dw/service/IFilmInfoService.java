@@ -17,4 +17,7 @@ public interface IFilmInfoService
 {
 	// 分页查询所有影视信息
 	public List<FilmInfo> queryAllFilmInfoByPage(PageParam pageParam);
+	
+	// 根据影视剧id删除信息
+	public boolean deleteByFilmId(String filmId);
 }
