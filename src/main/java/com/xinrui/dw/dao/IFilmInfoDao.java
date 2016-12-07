@@ -24,4 +24,7 @@ public interface IFilmInfoDao
 	// 根据影视剧id杀出信息
 	public int deleteByFilmId(FilmInfo filmInfo);
 
+	// 增加影视剧
+	public int insertFilmInfo(FilmInfo filmInfo);
+
 }

@@ -61,14 +61,35 @@ public class IndexController
 		// 删除成功
 		if (isDelete)
 		{
-			url = new Url(UrlUtil.INDEX, 200);
+			url = new Url(UrlUtil.CLUSTERTAB, 200);
 			return new ExecutionResult<Url>(true, url);
 		} else
 		// 删除失败
 		{
-			url = new Url(500, "DELETE FAIL");
+			url = new Url(500, UrlUtil.DELETE_FAIL);
 			return new ExecutionResult<Url>(false, url);
 		}
 	}
 
+	@RequestMapping(value = "/index/clusterTab")
+	public ModelAndView clusterTab(String currentPage)
+	{
+		ModelAndView mav = new ModelAndView("table/clusterTab");
+		// 设置并过滤页数
+		PageParam page = PageparmUtil.setCurrentPage(currentPage);
+		// 查询数据
+		List<FilmInfo> infos = filmService.queryAllFilmInfoByPage(page);
+		// 向页面返回数据
+		mav.addObject("infos", infos);
+		mav.addObject("page", page);
+		return mav;
+	}
+
+	@RequestMapping(value = "/index/insertTab")
+	public ExecutionResult<Url> insertTab(String filmName, String direct, String protagonist, String type,
+			String district, String language)
+	{
+		Url url = null;
+		return new ExecutionResult<Url>(false, url);
+	}
 }

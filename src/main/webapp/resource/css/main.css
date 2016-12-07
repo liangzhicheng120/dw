@@ -25,6 +25,8 @@
 .blackinput {
 	border: 1px dotted red;
 	width: 84%;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .blacktext {
@@ -34,7 +36,7 @@
 }
 
 .blacktextreply {
-	width: 92%;
+	width: 93%;
 	height: 300px;
 	resize: none;
 }

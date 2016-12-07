@@ -21,4 +21,26 @@
 		WHERE
 		filmId = #{filmId}
 	</delete>
+
+	<insert id="insertFilmInfo" parameterType="FilmInfo">
+		INSERT INTO
+		mydemo.recsys
+		(
+		filmName,
+		direct,
+		protagonist,
+		type,
+		district,
+		language
+		)
+		VALUES
+		(
+		#{filmName},
+		#{direct},
+		#{protagonist},
+		#{type},
+		#{district},
+		#{language}
+		)
+	</insert>
 </mapper>

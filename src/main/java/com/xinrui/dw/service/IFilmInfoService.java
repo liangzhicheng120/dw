@@ -17,7 +17,11 @@ public interface IFilmInfoService
 {
 	// 分页查询所有影视信息
 	public List<FilmInfo> queryAllFilmInfoByPage(PageParam pageParam);
-	
+
 	// 根据影视剧id删除信息
 	public boolean deleteByFilmId(String filmId);
+
+	// 增加影视剧
+	public boolean insertFilmInfo(String filmName, String direct, String protagonist, String type, String district,
+			String language);
 }

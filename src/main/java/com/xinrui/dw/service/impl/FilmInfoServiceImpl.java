@@ -37,7 +37,7 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 		Map<String, Object> parameter = new HashMap<String, Object>();
 		parameter.put("pageParam", pageParam);
 		List<FilmInfo> filmInfos = this.filmInfoDao.queryAllFilmInfoByPage(parameter);
-		Boolean isCluster = new Cluster().Execution("abc");
+		// Boolean isCluster = new Cluster().Execution("abc");
 		return filmInfos;
 	}
 
@@ -56,6 +56,30 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 			}
 		}
 		// 删除失败
+		return false;
+	}
+
+	// 增加影视剧
+	public boolean insertFilmInfo(String filmName, String direct, String protagonist, String type, String district,
+			String language)
+	{
+		FilmInfo filmInfo = new FilmInfo();
+		filmInfo.setDirect(direct);
+		filmInfo.setDistrict(district);
+		filmInfo.setFilmName(filmName);
+		filmInfo.setLanguage(language);
+		filmInfo.setProtagonist(protagonist);
+		filmInfo.setType(type);
+
+		if (filmInfo != null)
+		{
+			int row = this.filmInfoDao.insertFilmInfo(filmInfo);
+			if (row > 0)
+			{
+				return true;
+			}
+
+		}
 		return false;
 	}
 }

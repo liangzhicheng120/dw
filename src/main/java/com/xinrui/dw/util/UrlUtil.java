@@ -10,5 +10,12 @@ package com.xinrui.dw.util;
  */
 public class UrlUtil
 {
+	// Ê×Ò³
 	public static final String INDEX = "/demoweb/index";
+
+	// ¾ÛÀàtable
+	public static final String CLUSTERTAB = INDEX + "/clusterTab";
+
+	// É¾³ýÊ§°Ü
+	public static final String DELETE_FAIL = "DELETE FAIL";
 }

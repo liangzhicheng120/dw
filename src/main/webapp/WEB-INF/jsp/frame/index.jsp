@@ -20,7 +20,7 @@
 						</div>
 						<div class="box-content">
 							<div style="margin-top: 5px;">
-								<div class="loadingBody">
+								<div id="loadingBody">
 									<%@include file="../table/clusterTab.jsp"%>
 								</div>
 							</div>
