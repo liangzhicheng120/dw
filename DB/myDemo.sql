@@ -28,5 +28,7 @@ SELECT filmId,filmName,direct,protagonist,type,district FROM mydemo.recsys limit
 INSERT INTO `mydemo`.`recsys` (`filmId`, `filmName`, `direct`, `protagonist`, `type`, `district`) VALUES ('1', '琅琊榜', '孔笙 / 李雪', '胡歌 / 刘涛 / 王凯 / 黄维德 / 陈龙 / 丁勇岱 / 刘敏涛 / 靳东 / 刘奕君 / 王劲松 / 张龄心 / 吴磊 / 程皓枫 / 郭晓然 / 高鑫 / 王永泉 / 周奇奇 / 王鸥 / 张棪琰 / 宁文彤 / 方晓莉 / 杨雨婷 / 谭希和 / 张晓谦', '历史剧 / 古装剧 / 偶像剧 / 宫廷剧', ' 内地');
 INSERT INTO `mydemo`.`recsys` (`filmId`, `filmName`, `direct`, `protagonist`, `type`, `district`, `language`) VALUES ('2', '锦绣未央', '李慧珠', '唐嫣/ 罗晋/ 吴建豪/ 毛晓彤/ 李心艾', '古装/爱情', '中国大陆', '国语');
 INSERT INTO `mydemo`.`recsys` (`filmId`, `filmName`, `direct`, `protagonist`, `type`, `district`, `language`) VALUES ('3', '庶女有毒', '李慧珠', '唐嫣/ 罗晋/ 吴建豪/ 毛晓彤/ 李心艾', '古装/爱情', '中国大陆', '国语');
+INSERT INTO `mydemo`.`recsys` (`filmId`, `filmName`, `direct`, `protagonist`, `type`, `district`) VALUES ('4', '琅琊榜', '孔笙 / 李雪', '胡歌 / 刘涛 / 王凯 / 黄维德 / 陈龙 / 刘敏涛 / 靳东 / 刘奕君 /丁勇岱 / 王劲松 / 张龄心 / 吴磊 / 程皓枫 / 郭晓然 / 高鑫 / 王永泉 / 周奇奇 / 王鸥 / 张棪琰 / 宁文彤 / 方晓莉 / 杨雨婷 / 谭希和 / 张晓谦', '历史剧 / 古装剧 / 偶像剧 / 宫廷剧', ' 内地');
+
 
 UPDATE `mydemo`.`recsys` SET `language`='国语' WHERE `filmId`='1';

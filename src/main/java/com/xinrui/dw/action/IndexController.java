@@ -20,7 +20,7 @@ import com.xinrui.dw.bean.Url;
 import com.xinrui.dw.dto.ExecutionResult;
 import com.xinrui.dw.service.impl.FilmInfoServiceImpl;
 import com.xinrui.dw.util.PageparmUtil;
-import com.xinrui.dw.util.UrlStatEnum;
+import com.xinrui.dw.util.UrlUtil;
 
 /**
  * 
@@ -58,8 +58,8 @@ public class IndexController
 	@ResponseBody
 	public ExecutionResult<Url> deleteByFilmId(String filmId)
 	{
-		System.out.println(filmId);
-		Url url = new Url(UrlStatEnum.INDEX, 200);
+		logger.info("filmId={}", filmId);
+		Url url = new Url(UrlUtil.INDEX, 200);
 		return new ExecutionResult<Url>(true, url);
 	}
 

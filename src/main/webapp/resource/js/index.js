@@ -6,7 +6,6 @@ var index =
 	},
 	deleteByFilmId : function(filmId)
 	{
-		console.log(filmId)
 		$.ajax(
 		{
 			dataType : "json",
@@ -16,9 +15,11 @@ var index =
 			{
 				filmId : filmId
 			},
-			success : function(data)
+			success : function(result)
 			{
-				console.log(data.url)
+				console.log(result.data.url)
+				console.log(result.data.code)
+				console.log(result.data.message)
 			},
 			error : function(er)
 			{

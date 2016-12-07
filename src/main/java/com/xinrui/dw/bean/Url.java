@@ -1,7 +1,5 @@
 package com.xinrui.dw.bean;
 
-import com.xinrui.dw.util.UrlStatEnum;
-
 /**
  * 
  * @ClassName: Url
@@ -12,11 +10,11 @@ import com.xinrui.dw.util.UrlStatEnum;
  */
 public class Url
 {
-	private UrlStatEnum url; // 要跳转的地址
+	private String url; // 要跳转的地址
 	private int code; // 状态码
 	private String message; // 跳转信息
 
-	public Url(UrlStatEnum url, int code, String message)
+	public Url(String url, int code, String message)
 	{
 		super();
 		this.url = url;
@@ -24,19 +22,19 @@ public class Url
 		this.message = message;
 	}
 
-	public Url(UrlStatEnum url, int code)
+	public Url(String url, int code)
 	{
 		super();
 		this.url = url;
 		this.code = code;
 	}
 
-	public UrlStatEnum getUrl()
+	public String getUrl()
 	{
 		return url;
 	}
 
-	public void setUrl(UrlStatEnum url)
+	public void setUrl(String url)
 	{
 		this.url = url;
 	}
