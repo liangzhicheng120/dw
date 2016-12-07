@@ -37,7 +37,6 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 		parameter.put("pageParam", pageParam);
 		List<FilmInfo> filmInfos = this.filmInfoDao.queryAllFilmInfoByPage(parameter);
 		Boolean isCluster = new Cluster().Execution("abc");
-		System.out.println(isCluster);
 		return filmInfos;
 	}
 

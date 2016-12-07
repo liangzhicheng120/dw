@@ -43,7 +43,7 @@
 												<td>${infos.type }</td>
 												<td>${infos.district }</td>
 												<td>${infos.language }</td>
-												<td><a type="button" class="btn btn-danger btn-sm" onclick="javascipt:index.deleteByFilmId(${filmId})">删除</a> <a type="button" class="btn btn-success btn-sm">修改</a></td>
+												<td><a type="button" class="btn btn-danger btn-sm" onclick="javascipt:index.deleteByFilmId(${infos.filmId})">删除</a> <a type="button" class="btn btn-success btn-sm">修改</a></td>
 											</tr>
 										</c:forEach>
 									</tbody>

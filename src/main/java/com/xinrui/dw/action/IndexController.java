@@ -1,20 +1,26 @@
 package com.xinrui.dw.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.python.modules.newmodule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xinrui.dw.bean.FilmInfo;
 import com.xinrui.dw.bean.PageParam;
+import com.xinrui.dw.bean.Url;
+import com.xinrui.dw.dto.ExecutionResult;
 import com.xinrui.dw.service.impl.FilmInfoServiceImpl;
 import com.xinrui.dw.util.PageparmUtil;
+import com.xinrui.dw.util.UrlStatEnum;
 
 /**
  * 
@@ -25,7 +31,6 @@ import com.xinrui.dw.util.PageparmUtil;
  *
  */
 @Controller
-@RequestMapping(value = "/index")
 public class IndexController
 {
 
@@ -34,7 +39,7 @@ public class IndexController
 	@Resource
 	FilmInfoServiceImpl filmService;
 
-	@RequestMapping(value = "")
+	@RequestMapping(value = "/index")
 	public ModelAndView index(String currentPage)
 	{
 		ModelAndView mav = new ModelAndView("frame/index");
@@ -42,19 +47,20 @@ public class IndexController
 		PageParam page = PageparmUtil.setCurrentPage(currentPage);
 		// 查询数据
 		List<FilmInfo> infos = filmService.queryAllFilmInfoByPage(page);
-
 		// 向页面返回数据
 		mav.addObject("infos", infos);
 		mav.addObject("page", page);
 		return mav;
 	}
 
-	@RequestMapping(value = "/deleteByFilmId", method = RequestMethod.POST)
-	public ModelAndView deleteByFilmId(String filmId)
+	@RequestMapping(value = "/index/deleteByFilmId", method = RequestMethod.POST, produces =
+	{ "application/json;charset=UTF-8" })
+	@ResponseBody
+	public ExecutionResult<Url> deleteByFilmId(String filmId)
 	{
-		ModelAndView mav = new ModelAndView("forward:index");
 		System.out.println(filmId);
-		return mav;
+		Url url = new Url(UrlStatEnum.INDEX, 200);
+		return new ExecutionResult<Url>(true, url);
 	}
 
 }
