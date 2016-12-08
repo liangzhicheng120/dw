@@ -54,15 +54,15 @@
 			</div>
 			<div class="modal-body" id="infoFrom">
 				<ul>
-					<li>选择地区： <select id="district">
-							<option value="地区">地区</option>
+					<li>地区： <select id="district">
+							<option value="">--请选择--</option>
 							<option value="内陆">内陆</option>
 							<option value="中国大陆">中国大陆</option>
 							<option value="美国">美国</option>
 							<option value="英国">英国</option>
 							<option value="日本">日本</option>
-					</select> 选择语言： <select id="language">
-							<option value="语言">语言</option>
+					</select> &nbsp;&nbsp;语言： <select id="language">
+							<option value="">--请选择--</option>
 							<option value="国语">国语</option>
 							<option value="英语">英语</option>
 							<option value="德语">德语</option>
