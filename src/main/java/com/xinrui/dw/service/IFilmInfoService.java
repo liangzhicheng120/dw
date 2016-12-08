@@ -24,4 +24,7 @@ public interface IFilmInfoService
 	// 增加影视剧
 	public boolean insertFilmInfo(String filmName, String direct, String protagonist, String type, String district,
 			String language);
+
+	// 查询所有信息
+	public List<FilmInfo> queryAllFilmInfo();
 }

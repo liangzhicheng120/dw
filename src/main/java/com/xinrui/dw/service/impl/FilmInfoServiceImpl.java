@@ -82,4 +82,10 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 		}
 		return false;
 	}
+
+	// 查询所有信息
+	public List<FilmInfo> queryAllFilmInfo()
+	{
+		return null;
+	}
 }

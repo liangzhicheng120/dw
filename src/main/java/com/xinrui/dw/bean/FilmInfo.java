@@ -91,8 +91,7 @@ public class FilmInfo
 	@Override
 	public String toString()
 	{
-		return "FileInfo [filmId=" + filmId + ", filmName=" + filmName + ", direct=" + direct + ", protagonist="
-				+ protagonist + ", type=" + type + ", district=" + district + ", language=" + language + "]";
+		return filmName + "," + direct + "," + protagonist + "," + type + "," + district + "," + language;
 	}
 
 }

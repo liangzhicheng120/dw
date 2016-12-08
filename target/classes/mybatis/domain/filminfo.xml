@@ -2,6 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xinrui.dw.dao.IFilmInfoDao">
+	<select id="queryAllFilmInfo" resultType="FilmInfo">
+		SELECT
+		filmId,
+		filmName,
+		direct,
+		protagonist,
+		type,
+		district,
+		language
+		FROM
+		mydemo.recsys
+	</select>
+
 	<select id="queryAllFilmInfoByPage" resultType="FilmInfo">
 		SELECT
 		filmId,

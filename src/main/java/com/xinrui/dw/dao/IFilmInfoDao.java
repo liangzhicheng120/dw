@@ -27,4 +27,7 @@ public interface IFilmInfoDao
 	// 增加影视剧
 	public int insertFilmInfo(FilmInfo filmInfo);
 
+	// 查询所有信息
+	public List<FilmInfo> queryAllFilmInfo();
+
 }

@@ -7,6 +7,11 @@
 	<dependencies>
 		<!-- spring 3.1.2常用配置 -->
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>3.1.4.RELEASE</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
@@ -104,7 +109,7 @@
 			<version>1.6.0</version>
 		</dependency>
 		<!-- slf4j日志文件end -->
-		
+
 		<dependency>
 			<groupId>com.chenlb.mmseg4j</groupId>
 			<artifactId>mmseg4j-core</artifactId>
@@ -184,6 +189,13 @@
 			<version>2.4.6</version>
 		</dependency>
 		<!-- json自动打包配置end -->
-
+		
+		<!-- csv文件包 -->
+		<dependency>
+			<groupId>net.sourceforge.javacsv</groupId>
+			<artifactId>javacsv</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<!-- csv文件包 -->
 	</dependencies>
 </project>

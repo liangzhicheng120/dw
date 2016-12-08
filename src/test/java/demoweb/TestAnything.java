@@ -1,7 +1,13 @@
 package demoweb;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.junit.Test;
 
+import com.xinrui.dw.bean.FilmInfo;
+import com.xinrui.dw.dao.IFilmInfoDao;
 import com.xinrui.dw.util.UrlUtil;
 
 /**
