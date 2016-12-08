@@ -68,6 +68,14 @@ var index =
 			});
 		})
 	},
+	searchByClusterType : function()
+	{
+		common.loadingBody(index.url.clusterTab(),
+		{
+			currentPage : $('#currentPage').val(),
+			clustertype : $('#clustertype').val()
+		})
+	},
 	startCluster : function()
 	{
 		// 启动聚类
@@ -84,7 +92,8 @@ var index =
 			{
 				index.isSuccess(result.data.url, result.data.code, result.data.message,
 				{
-					currentPage : $('#currentPage').val()
+					currentPage : $('#currentPage').val(),
+					clustertype : $('#clustertype').val()
 				});
 			}
 		})
@@ -105,12 +114,14 @@ var index =
 			data :
 			{
 				filmId : $('#filmid').text(),
+				clustertype : $('#clustertype').val()
 			},
 			success : function(result)
 			{
 				index.isSuccess(result.data.url, result.data.code, result.data.message,
 				{
-					currentPage : $('#currentPage').val()
+					currentPage : $('#currentPage').val(),
+					clustertype : $('#clustertype').val()
 				})
 			},
 		});
@@ -131,7 +142,8 @@ var index =
 		common.loadingBlankBody(index.url.clusterTab(),
 		{
 			// 页数
-			currentPage : currentPage
+			currentPage : currentPage,
+			clustertype : $('#clustertype').val()
 		})
 	}
 }

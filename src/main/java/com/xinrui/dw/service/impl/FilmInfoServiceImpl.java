@@ -35,12 +35,18 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 	IFilmInfoDao filmInfoDao;
 
 	// 分页查询影视剧信息
-	public List<FilmInfo> queryAllFilmInfoByPage(PageParam pageParam)
+	public List<FilmInfo> queryAllFilmInfoByPage(PageParam pageParam, String clustertype)
 	{
 		Map<String, Object> parameter = new HashMap<String, Object>();
+
+		FilmInfo filmInfo = new FilmInfo();
+		if (StringUtils.isNotEmpty(clustertype))
+		{
+			filmInfo.setClustertype(Integer.valueOf(clustertype));
+		}
+		parameter.put("filmInfo", filmInfo);
 		parameter.put("pageParam", pageParam);
 		List<FilmInfo> filmInfos = this.filmInfoDao.queryAllFilmInfoByPage(parameter);
-		// Boolean isCluster = new Cluster().Execution("abc");
 		return filmInfos;
 	}
 

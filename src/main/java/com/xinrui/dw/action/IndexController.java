@@ -40,16 +40,17 @@ public class IndexController
 	FilmInfoServiceImpl filmService;
 
 	@RequestMapping(value = "/index")
-	public ModelAndView index(String currentPage)
+	public ModelAndView index(String currentPage, String clustertype)
 	{
 		ModelAndView mav = new ModelAndView("frame/index");
 		// 设置并过滤页数
 		PageParam page = PageparmUtil.setCurrentPage(currentPage);
 		// 查询数据
-		List<FilmInfo> infos = filmService.queryAllFilmInfoByPage(page);
+		List<FilmInfo> infos = filmService.queryAllFilmInfoByPage(page, clustertype);
 		// 向页面返回数据
 		mav.addObject("infos", infos);
 		mav.addObject("page", page);
+		mav.addObject("clustertype", clustertype);
 		mav.addObject("currentPage", page.getCurrentPage());
 		return mav;
 	}
@@ -75,16 +76,17 @@ public class IndexController
 	}
 
 	@RequestMapping(value = "/index/clusterTab")
-	public ModelAndView clusterTab(String currentPage)
+	public ModelAndView clusterTab(String currentPage, String clustertype)
 	{
 		ModelAndView mav = new ModelAndView("table/clusterTab");
 		// 设置并过滤页数
 		PageParam page = PageparmUtil.setCurrentPage(currentPage);
 		// 查询数据
-		List<FilmInfo> infos = filmService.queryAllFilmInfoByPage(page);
+		List<FilmInfo> infos = filmService.queryAllFilmInfoByPage(page, clustertype);
 		// 向页面返回数据
 		mav.addObject("infos", infos);
 		mav.addObject("page", page);
+		mav.addObject("clustertype", clustertype);
 		mav.addObject("currentPage", page.getCurrentPage());
 		return mav;
 	}

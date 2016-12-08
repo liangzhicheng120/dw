@@ -25,7 +25,7 @@
 	</div>
 	<div class="col-md-3">
 		<div class="input-group input-group-sm">
-			<input type="text" class="form-control" placeholder="搜索ID" aria-describedby="basic-addon1" id="hospital"> <span class="input-group-addon" id="search_btn" onclick="search()"><i
+			<input type="text" class="form-control" placeholder="搜索ID" aria-describedby="basic-addon1" id="clustertype" value="${clustertype }"> <span class="input-group-addon" onclick="index.searchByClusterType()"><i
 				class="glyphicon glyphicon-search"></i></span>
 		</div>
 	</div>

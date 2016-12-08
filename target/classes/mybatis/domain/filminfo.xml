@@ -28,6 +28,14 @@
 		clustertype
 		FROM
 		mydemo.clustertab
+		<where>
+			<if test="filmInfo.clustertype != null and !&quot;&quot;.equals(filmInfo.clustertype)">
+				AND clustertype=#{filmInfo.clustertype}
+			</if>
+		</where>
+		ORDER BY
+		clustertype
+		DESC
 	</select>
 
 	<delete id="deleteByFilmId" parameterType="FilmInfo">
@@ -58,11 +66,11 @@
 		#{language}
 		)
 	</insert>
-	
+
 	<delete id="deleteAllClusterTab">
 		SET SQL_SAFE_UPDATES = 0;
-		DELETE FROM 
+		DELETE FROM
 		mydemo.clustertab
 	</delete>
-	
+
 </mapper>

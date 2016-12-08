@@ -26,7 +26,7 @@ public class PageParam implements java.io.Serializable
 	/**
 	 * 每页显示条数
 	 */
-	private int pageNumber = 10;
+	private int pageNumber = 15;
 	
 	/**
 	 * 数据库中limit的参数，从第几条开始取
