@@ -13,6 +13,10 @@ var index =
 		clusterTab : function()
 		{
 			return '/demoweb/index/clusterTab'
+		},
+		insertTab : function()
+		{
+			return '/demoweb/index/insertTab'
 		}
 	},
 	// 初始化页面
@@ -20,7 +24,43 @@ var index =
 	{
 		$('#submitBtn').click(function()
 		{
-			loadingBody()
+			if ($('#filmName').val() == '' || $('#language').val() == '' || $('#district').val() == '')
+			{
+				$('#message').html('Please fill all the information!')
+				return false
+			}
+			$.ajax(
+			{
+				dataType : "json",
+				type : "POST",
+				url : index.url.insertTab(),
+				data :
+				{
+					filmName : $('#filmName').val(),
+					direct : $('#direct').val(),
+					protagonist : $('#protagonist').val(),
+					type : $('#type').val(),
+					district : $('#district').val(),
+					language : $('#language').val(),
+					currentPage : $('#currentPage').val()
+				},
+				beforeSend : function()
+				{
+					$('#message').html('')
+				},
+				success : function(result)
+				{
+					index.isSuccess(result.data.url, result.data.code, result.data.message,
+					{
+						currentPage : $('#currentPage').val()
+					});
+					$('#message').html('Insert a message successfully!')
+				},
+				error : function(er)
+				{
+					$('#message').html(er)
+				},
+			});
 		})
 	},
 	// 展开删除模态框
@@ -38,19 +78,26 @@ var index =
 			url : index.url.deleteByFilmId(),
 			data :
 			{
-				filmId : $('#filmid').text()
+				filmId : $('#filmid').text(),
 			},
 			success : function(result)
 			{
-				if (result.data.code == '200')
+				index.isSuccess(result.data.url, result.data.code, result.data.message,
 				{
-					common.loadingBody(result.data.url)
-				} else
-				{
-					common.showTipError(result.data.code + ":" + result.data.message)
-				}
+					currentPage : $('#currentPage').val()
+				})
 			},
 		});
+	},
+	isSuccess : function(url, code, message, data)
+	{
+		if (code == '200')
+		{
+			common.loadingBody(url, data)
+		} else
+		{
+			common.showTipError(code + ":" + message)
+		}
 	},
 	// 换页
 	changeCurrentPage : function(currentPage)

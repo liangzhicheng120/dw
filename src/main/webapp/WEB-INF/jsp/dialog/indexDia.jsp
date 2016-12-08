@@ -70,6 +70,7 @@
 					</li>
 					<li>名称： <input type="text" id="filmName" placeholder="影视剧名称" class="blackinput" /></li>
 					<li>类型： <input type="text" id="type" placeholder="类型" class="blackinput" /></li>
+					<li>导演： <input type="text" id="direct" placeholder="导演" class="blackinput" /></li>
 					<li class="center-block" style="margin-left: -35px;">主演</li>
 					<li><textarea placeholder="主演" id="protagonist" class="blacktextreply"></textarea></li>
 				</ul>

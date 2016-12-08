@@ -18,4 +18,7 @@ public class UrlUtil
 
 	// …æ≥˝ ß∞‹
 	public static final String DELETE_FAIL = "DELETE FAIL";
+
+	// ≤Â»Î ß∞‹
+	public static final String INSERT_FAIL = "INSERT FAIL";
 }

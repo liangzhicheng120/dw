@@ -5,7 +5,11 @@
 		<div class="input-group input-group-sm">
 			<span class="input-group-addon">地区</span> <select size="1" onchange="changeDocCity ( this )" class="form-control">
 				<option value="">--请选择--</option>
-
+				<option value="内陆">内陆</option>
+				<option value="中国大陆">中国大陆</option>
+				<option value="美国">美国</option>
+				<option value="英国">英国</option>
+				<option value="日本">日本</option>
 			</select>
 		</div>
 	</div>
@@ -13,20 +17,21 @@
 		<div class="input-group input-group-sm">
 			<span class="input-group-addon">语言</span> <select size="1" onchange="changeDocDistrict ( this )" class="form-control">
 				<option value="">--请选择--</option>
-
+				<option value="国语">国语</option>
+				<option value="英语">英语</option>
+				<option value="德语">德语</option>
 			</select>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="input-group input-group-sm">
-			<input type="text" class="form-control" placeholder="搜索ID" aria-describedby="basic-addon1" id="hospital" 
-			> <span class="input-group-addon" id="search_btn" onclick="search()"><i
+			<input type="text" class="form-control" placeholder="搜索ID" aria-describedby="basic-addon1" id="hospital"> <span class="input-group-addon" id="search_btn" onclick="search()"><i
 				class="glyphicon glyphicon-search"></i></span>
 		</div>
 	</div>
 	<div class="col-md-3">
-		<a class="btn btn-success btn-sm" data-toggle="modal" data-target="#insertDia" data-backdrop="static" style="font-weight: bold;">&nbsp;&nbsp;增加&nbsp;&nbsp;</a> <a
-			class="btn btn-danger btn-sm" style="font-weight: bold;" data-toggle="modal" data-target="#" data-backdrop="static">&nbsp;&nbsp;待定&nbsp;&nbsp;</a>
+		<a class="btn btn-success btn-sm" data-toggle="modal" data-target="#insertDia" data-backdrop="static" style="font-weight: bold;">&nbsp;&nbsp;增加&nbsp;&nbsp;</a> <a class="btn btn-danger btn-sm"
+			style="font-weight: bold;" data-toggle="modal" data-target="#" data-backdrop="static">&nbsp;&nbsp;启动&nbsp;&nbsp;</a>
 	</div>
 </div>
 
@@ -94,3 +99,4 @@
 		</div>
 	</div>
 </div>
+<input type="text" value="${currentPage }" hidden="hidden" id="currentPage">

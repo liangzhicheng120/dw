@@ -23,7 +23,7 @@ import com.xinrui.dw.util.UrlUtil;
 /**
  * 
  * @ClassName: Indexcontroller
- * @Description: 首页控制类
+ * @Description: 首页控制类 500:删除失败，501:插入失败
  * @author liangzhicheng
  * @date 2016年12月5日 上午11:36:47
  *
@@ -32,6 +32,7 @@ import com.xinrui.dw.util.UrlUtil;
 public class IndexController
 {
 
+	@SuppressWarnings("unused")
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Resource
@@ -48,6 +49,7 @@ public class IndexController
 		// 向页面返回数据
 		mav.addObject("infos", infos);
 		mav.addObject("page", page);
+		mav.addObject("currentPage", page.getCurrentPage());
 		return mav;
 	}
 
@@ -82,14 +84,28 @@ public class IndexController
 		// 向页面返回数据
 		mav.addObject("infos", infos);
 		mav.addObject("page", page);
+		mav.addObject("currentPage", page.getCurrentPage());
 		return mav;
 	}
 
-	@RequestMapping(value = "/index/insertTab")
+	@RequestMapping(value = "/index/insertTab", method = RequestMethod.POST, produces =
+	{ "application/json;charset=UTF-8" })
+	@ResponseBody
 	public ExecutionResult<Url> insertTab(String filmName, String direct, String protagonist, String type,
 			String district, String language)
 	{
+		boolean isInsert = filmService.insertFilmInfo(filmName, direct, protagonist, type, district, language);
 		Url url = null;
-		return new ExecutionResult<Url>(false, url);
+		// 插入成功
+		if (isInsert)
+		{
+			url = new Url(UrlUtil.CLUSTERTAB, 200);
+			return new ExecutionResult<Url>(true, url);
+		} else
+		// 插入失败
+		{
+			url = new Url(501, UrlUtil.INSERT_FAIL);
+			return new ExecutionResult<Url>(false, url);
+		}
 	}
 }
