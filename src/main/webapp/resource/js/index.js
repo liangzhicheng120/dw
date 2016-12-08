@@ -70,7 +70,7 @@ var index =
 	},
 	searchByClusterType : function()
 	{
-		common.loadingBody(index.url.clusterTab(),
+		common.loadingBlankBody(index.url.clusterTab(),
 		{
 			currentPage : $('#currentPage').val(),
 			clustertype : $('#clustertype').val()
