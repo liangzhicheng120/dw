@@ -8,12 +8,15 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.python.modules.newmodule;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.csvreader.CsvWriter;
 import com.xinrui.dw.bean.FilmInfo;
 import com.xinrui.dw.dao.IFilmInfoDao;
+import com.xinrui.dw.python.Cluster;
+import com.xinrui.dw.util.Constant;
 
 /**
  * 
@@ -34,13 +37,18 @@ public class TestAllDao
 	public void testCreateCsv() throws IOException
 	{
 		List<FilmInfo> filmInfos = filmInfoDao.queryAllFilmInfo();
-		String csvFilePath = "D:\\workspace\\eclipse-workspace\\dw\\src\\main\\java\\com\\xinrui\\dw\\python\\impl\\source\\test.csv";
-		CsvWriter wr = new CsvWriter(csvFilePath, ',', Charset.forName("GBK"));
+		CsvWriter wr = new CsvWriter(Constant.CSVFILEPATH, ',', Charset.forName("GBK"));
+		// 导出所有数据
 		for (FilmInfo filmInfo : filmInfos)
 		{
 			wr.writeComment(filmInfo.toString());
 		}
 		wr.close();
+		// 删除所有数据
+		filmInfoDao.deleteAllClusterTab();
+		Cluster cluster = new Cluster();
+		boolean isCluster = cluster.Execution("");
+		System.out.println(isCluster);
 	}
 
 }

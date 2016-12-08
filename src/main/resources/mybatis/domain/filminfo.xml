@@ -10,9 +10,10 @@
 		protagonist,
 		type,
 		district,
-		language
+		language,
+		clustertype
 		FROM
-		mydemo.recsys
+		mydemo.clustertab
 	</select>
 
 	<select id="queryAllFilmInfoByPage" resultType="FilmInfo">
@@ -23,21 +24,22 @@
 		protagonist,
 		type,
 		district,
-		language
+		language,
+		clustertype
 		FROM
-		mydemo.recsys
+		mydemo.clustertab
 	</select>
 
 	<delete id="deleteByFilmId" parameterType="FilmInfo">
 		DELETE FROM
-		mydemo.recsys
+		mydemo.clustertab
 		WHERE
 		filmId = #{filmId}
 	</delete>
 
 	<insert id="insertFilmInfo" parameterType="FilmInfo">
 		INSERT INTO
-		mydemo.recsys
+		mydemo.clustertab
 		(
 		filmName,
 		direct,
@@ -56,4 +58,11 @@
 		#{language}
 		)
 	</insert>
+	
+	<delete id="deleteAllClusterTab">
+		SET SQL_SAFE_UPDATES = 0;
+		DELETE FROM 
+		mydemo.clustertab
+	</delete>
+	
 </mapper>

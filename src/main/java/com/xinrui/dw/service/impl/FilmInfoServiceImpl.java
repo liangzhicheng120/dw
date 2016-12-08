@@ -1,5 +1,7 @@
 package com.xinrui.dw.service.impl;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,10 +12,12 @@ import org.apache.commons.lang.StringUtils;
 import org.python.modules.newmodule;
 import org.springframework.stereotype.Service;
 
+import com.csvreader.CsvWriter;
 import com.xinrui.dw.bean.FilmInfo;
 import com.xinrui.dw.dao.IFilmInfoDao;
 import com.xinrui.dw.python.Cluster;
 import com.xinrui.dw.service.IFilmInfoService;
+import com.xinrui.dw.util.Constant;
 import com.xinrui.dw.bean.PageParam;
 
 /**
@@ -33,7 +37,6 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 	// 分页查询影视剧信息
 	public List<FilmInfo> queryAllFilmInfoByPage(PageParam pageParam)
 	{
-
 		Map<String, Object> parameter = new HashMap<String, Object>();
 		parameter.put("pageParam", pageParam);
 		List<FilmInfo> filmInfos = this.filmInfoDao.queryAllFilmInfoByPage(parameter);
@@ -70,7 +73,6 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 		filmInfo.setLanguage(language);
 		filmInfo.setProtagonist(protagonist);
 		filmInfo.setType(type);
-
 		if (filmInfo != null)
 		{
 			int row = this.filmInfoDao.insertFilmInfo(filmInfo);
@@ -78,7 +80,6 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 			{
 				return true;
 			}
-
 		}
 		return false;
 	}
@@ -87,5 +88,25 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 	public List<FilmInfo> queryAllFilmInfo()
 	{
 		return null;
+	}
+
+	// 启动聚类脚本
+	public boolean startCluster() throws IOException
+	{
+		List<FilmInfo> filmInfos = filmInfoDao.queryAllFilmInfo();
+		CsvWriter wr = new CsvWriter(Constant.CSVFILEPATH, ',', Charset.forName("GBK"));
+		// 导出所有数据
+		for (FilmInfo filmInfo : filmInfos)
+		{
+			wr.writeComment(filmInfo.toString());
+		}
+		wr.close();
+		// 删除所有数据
+		int row = this.filmInfoDao.deleteAllClusterTab();
+		if (row == 0)
+		{ // 执行聚类
+			return new Cluster().Execution("");
+		}
+		return false;
 	}
 }

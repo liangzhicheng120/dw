@@ -17,11 +17,16 @@ var index =
 		insertTab : function()
 		{
 			return '/demoweb/index/insertTab'
+		},
+		startCluster : function()
+		{
+			return '/demoweb/index/startCluster'
 		}
 	},
 	// 初始化页面
 	init : function()
 	{
+		// 提交信息
 		$('#submitBtn').click(function()
 		{
 			if ($('#filmName').val() == '' || $('#language').val() == '' || $('#district').val() == '')
@@ -61,6 +66,27 @@ var index =
 					$('#message').html(er)
 				},
 			});
+		})
+	},
+	startCluster : function()
+	{
+		// 启动聚类
+		$.ajax(
+		{
+			dataType : "json",
+			type : "POST",
+			url : index.url.startCluster(),
+			beforeSend : function()
+			{
+				common.showTipLoad()
+			},
+			success : function(result)
+			{
+				index.isSuccess(result.data.url, result.data.code, result.data.message,
+				{
+					currentPage : $('#currentPage').val()
+				});
+			}
 		})
 	},
 	// 展开删除模态框

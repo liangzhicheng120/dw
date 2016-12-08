@@ -1,5 +1,6 @@
 package com.xinrui.dw.action;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,7 +24,7 @@ import com.xinrui.dw.util.UrlUtil;
 /**
  * 
  * @ClassName: Indexcontroller
- * @Description: 首页控制类 500:删除失败，501:插入失败
+ * @Description: 首页控制类 500:删除失败，501:插入失败,502：聚类失败
  * @author liangzhicheng
  * @date 2016年12月5日 上午11:36:47
  *
@@ -105,6 +106,24 @@ public class IndexController
 		// 插入失败
 		{
 			url = new Url(501, UrlUtil.INSERT_FAIL);
+			return new ExecutionResult<Url>(false, url);
+		}
+	}
+
+	@RequestMapping(value = "/index/startCluster", method = RequestMethod.POST, produces =
+	{ "application/json;charset=UTF-8" })
+	@ResponseBody
+	public ExecutionResult<Url> startCluster() throws IOException
+	{
+		boolean isSuccess = filmService.startCluster();
+		Url url = null;
+		if (isSuccess)
+		{
+			url = new Url(UrlUtil.CLUSTERTAB, 200);
+			return new ExecutionResult<Url>(true, url);
+		} else
+		{
+			url = new Url(502, UrlUtil.INSERT_FAIL);
 			return new ExecutionResult<Url>(false, url);
 		}
 	}

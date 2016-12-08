@@ -30,4 +30,7 @@ public interface IFilmInfoDao
 	// 查询所有信息
 	public List<FilmInfo> queryAllFilmInfo();
 
+	// 删除所有数据
+	public int deleteAllClusterTab();
+
 }

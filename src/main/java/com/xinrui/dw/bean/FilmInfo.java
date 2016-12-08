@@ -17,6 +17,17 @@ public class FilmInfo
 	private String type; // 影视剧类型
 	private String district; // 地区
 	private String language; // 语言
+	private Integer clustertype;// 聚类类别
+
+	public Integer getClustertype()
+	{
+		return clustertype;
+	}
+
+	public void setClustertype(Integer clustertype)
+	{
+		this.clustertype = clustertype;
+	}
 
 	public int getFilmId()
 	{
@@ -91,7 +102,8 @@ public class FilmInfo
 	@Override
 	public String toString()
 	{
-		return filmName + "," + direct + "," + protagonist + "," + type + "," + district + "," + language;
+		return filmId + "," + filmName + "," + direct + "," + protagonist + "," + type + "," + district + ","
+				+ language;
 	}
 
 }

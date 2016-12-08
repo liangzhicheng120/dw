@@ -1,5 +1,7 @@
 package com.xinrui.dw.python;
 
+import java.io.IOException;
+
 import com.xinrui.dw.util.Constant;
 import com.xinrui.dw.util.PythonUtil;
 
@@ -14,7 +16,7 @@ import com.xinrui.dw.util.PythonUtil;
 public class Cluster
 {
 
-	public boolean Execution(String args)
+	public boolean Execution(String args) throws IOException
 	{
 		return PythonUtil.ExePython(Constant.BASEDIR, Constant.CLUSTERPATH, args);
 	}

@@ -1,7 +1,7 @@
 /*创建数据源*/
 CREATE SCHEMA `mydemo` DEFAULT CHARACTER SET utf8 ; 
 
-/*建表，存放影视剧信息，包括：剧名、导演、主演、类型、地区*/
+/*建表，存放影视剧信息，包括：剧名、导演、主演、类型、地区(聚类前)*/
 CREATE TABLE `mydemo`.`recsys` (
   `filmId` INT NOT NULL AUTO_INCREMENT COMMENT '影视剧id',
   `filmName` VARCHAR(50) NULL COMMENT '影视剧名称',
@@ -14,13 +14,37 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = '存放影视剧信息，包括：剧名、导演、主演、类型、地区';
 
-
 ALTER TABLE `mydemo`.`recsys` 
 CHANGE COLUMN `protagonist` `protagonist` VARCHAR(200) NULL DEFAULT NULL COMMENT '主演' ,
 CHANGE COLUMN `type` `type` VARCHAR(100) NULL DEFAULT NULL COMMENT '影视剧类型' ,
 CHANGE COLUMN `district` `district` VARCHAR(100) NULL DEFAULT NULL COMMENT '地区' ,
 ADD COLUMN `language` VARCHAR(50) NULL AFTER `district`;
 
+/*建表，存放影视剧信息，包括：剧名、导演、主演、类型、地区(聚类后)*/
+CREATE TABLE `mydemo`.`clustertab` (
+  `filmId` INT NOT NULL AUTO_INCREMENT COMMENT '影视剧id',
+  `filmName` VARCHAR(50) NULL COMMENT '影视剧名称',
+  `direct` VARCHAR(50) NULL COMMENT '导演',
+  `protagonist` VARCHAR(50) NULL COMMENT '主演',
+  `type` VARCHAR(25) NULL COMMENT '影视剧类型',
+  `district` VARCHAR(45) NULL COMMENT '地区',
+  PRIMARY KEY (`filmId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COMMENT = '存放影视剧信息，包括：剧名、导演、主演、类型、地区';
+
+ALTER TABLE `mydemo`.`clustertab` 
+CHANGE COLUMN `protagonist` `protagonist` VARCHAR(200) NULL DEFAULT NULL COMMENT '主演' ,
+CHANGE COLUMN `type` `type` VARCHAR(100) NULL DEFAULT NULL COMMENT '影视剧类型' ,
+CHANGE COLUMN `district` `district` VARCHAR(100) NULL DEFAULT NULL COMMENT '地区' ,
+ADD COLUMN `language` VARCHAR(50) NULL AFTER `district`;
+
+
+ALTER TABLE `mydemo`.`clustertab` 
+ADD COLUMN `clustertype` INT(11) NULL COMMENT '聚类后类别' AFTER `language`;
+
+ALTER TABLE `mydemo`.`clustertab` 
+CHANGE COLUMN `filmId` `filmId` INT(11) NOT NULL COMMENT '影视剧id' ;
 
 /*-----------------------------CRUD---------------------------------*/
 SELECT filmId,filmName,direct,protagonist,type,district FROM mydemo.recsys limit 100;

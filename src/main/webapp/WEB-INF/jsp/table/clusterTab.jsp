@@ -31,7 +31,7 @@
 	</div>
 	<div class="col-md-3">
 		<a class="btn btn-success btn-sm" data-toggle="modal" data-target="#insertDia" data-backdrop="static" style="font-weight: bold;">&nbsp;&nbsp;增加&nbsp;&nbsp;</a> <a class="btn btn-danger btn-sm"
-			style="font-weight: bold;" data-toggle="modal" data-target="#" data-backdrop="static">&nbsp;&nbsp;启动&nbsp;&nbsp;</a>
+			style="font-weight: bold;" onclick="index.startCluster()">&nbsp;&nbsp;启动&nbsp;&nbsp;</a>
 	</div>
 </div>
 
@@ -39,7 +39,7 @@
 <table class="table table-striped table-bordered responsive">
 	<thead>
 		<tr>
-			<th>ID</th>
+			<th>类别</th>
 			<th>影视剧名称</th>
 			<th>导演</th>
 			<th>主演</th>
@@ -52,7 +52,7 @@
 	<tbody>
 		<c:forEach items="${infos}" var="infos">
 			<tr>
-				<td>${infos.filmId}</td>
+				<td>${infos.clustertype}</td>
 				<td>${infos.filmName }</td>
 				<td>${infos.direct }</td>
 				<td>${infos.protagonist }</td>
