@@ -31,4 +31,7 @@ public interface IFilmInfoService
 
 	// 启动聚类脚本
 	public boolean startCluster() throws IOException;
+
+	// 全部删除
+	public boolean deleteAllInfo(String ids);
 }

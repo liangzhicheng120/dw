@@ -21,6 +21,10 @@ var index =
 		startCluster : function()
 		{
 			return '/demoweb/index/startCluster'
+		},
+		deleteAllInfo : function()
+		{
+			return '/demoweb/index/deleteAllInfo'
 		}
 	},
 	// 初始化页面
@@ -126,6 +130,7 @@ var index =
 			},
 		});
 	},
+	// 判断返回值是否正确
 	isSuccess : function(url, code, message, data)
 	{
 		if (code == '200')
@@ -144,6 +149,16 @@ var index =
 			// 页数
 			currentPage : currentPage,
 			clustertype : $('#clustertype').val()
+		})
+	},
+	// 删除所有信息
+	deleteAllInfo : function()
+	{
+		common.loadingBlankBody(index.url.deleteAllInfo(),
+		{
+			ids : common.batchOperate(),
+			clustertype : $('#clustertype').val(),
+			currentPage : $('#currentPage').val()
 		})
 	}
 }

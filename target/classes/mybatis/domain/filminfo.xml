@@ -73,4 +73,19 @@
 		mydemo.clustertab
 	</delete>
 
+
+	<delete id="deleteAllInfo" parameterType="java.util.List">
+		DELETE
+		FROM
+		mydemo.clustertab
+		WHERE
+		filmId
+		IN
+		(
+		<foreach collection="list" item="id" separator=",">
+			#{filmId}
+		</foreach>
+		)
+	</delete>
+
 </mapper>

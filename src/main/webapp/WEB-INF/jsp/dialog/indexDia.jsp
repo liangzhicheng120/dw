@@ -66,6 +66,7 @@
 							<option value="国语">国语</option>
 							<option value="英语">英语</option>
 							<option value="德语">德语</option>
+							<option value="日语">日语</option>
 					</select>
 					</li>
 					<li>名称： <input type="text" id="filmName" placeholder="影视剧名称" class="blackinput" /></li>

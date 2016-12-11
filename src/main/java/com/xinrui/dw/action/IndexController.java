@@ -24,7 +24,7 @@ import com.xinrui.dw.util.UrlUtil;
 /**
  * 
  * @ClassName: Indexcontroller
- * @Description: 首页控制类 500:删除失败，501:插入失败,502：聚类失败
+ * @Description: 首页控制类 500:删除失败，501:插入失败,502：聚类失败,503：删除所有失败
  * @author liangzhicheng
  * @date 2016年12月5日 上午11:36:47
  *
@@ -119,13 +119,35 @@ public class IndexController
 	{
 		boolean isSuccess = filmService.startCluster();
 		Url url = null;
+		// 聚类成功
+		if (isSuccess)
+		{
+			url = new Url(UrlUtil.CLUSTERTAB, 200);
+			return new ExecutionResult<Url>(true, url);
+			// 聚类失败
+		} else
+		{
+			url = new Url(502, UrlUtil.INSERT_FAIL);
+			return new ExecutionResult<Url>(false, url);
+		}
+	}
+
+	@RequestMapping(value = "/index/deleteAllInfo", method = RequestMethod.POST, produces =
+	{ "application/json;charset=UTF-8" })
+	@ResponseBody
+	public ExecutionResult<Url> deleteAllInfo(String ids) throws IOException
+	{
+		boolean isSuccess = filmService.deleteAllInfo(ids);
+		Url url = null;
+		// 批量删除成功
 		if (isSuccess)
 		{
 			url = new Url(UrlUtil.CLUSTERTAB, 200);
 			return new ExecutionResult<Url>(true, url);
 		} else
+		// 批量删除失败
 		{
-			url = new Url(502, UrlUtil.INSERT_FAIL);
+			url = new Url(503, UrlUtil.INSERT_FAIL);
 			return new ExecutionResult<Url>(false, url);
 		}
 	}

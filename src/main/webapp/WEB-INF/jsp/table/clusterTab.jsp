@@ -25,13 +25,14 @@
 	</div>
 	<div class="col-md-3">
 		<div class="input-group input-group-sm">
-			<input type="text" class="form-control" placeholder="搜索ID" aria-describedby="basic-addon1" id="clustertype" value="${clustertype }"> <span class="input-group-addon" onclick="index.searchByClusterType()"><i
-				class="glyphicon glyphicon-search"></i></span>
+			<input type="text" class="form-control" placeholder="搜索ID" aria-describedby="basic-addon1" id="clustertype" value="${clustertype }"> <span class="input-group-addon"
+				onclick="index.searchByClusterType()"><i class="glyphicon glyphicon-search"></i></span>
 		</div>
 	</div>
 	<div class="col-md-3">
-		<a class="btn btn-success btn-sm" data-toggle="modal" data-target="#insertDia" data-backdrop="static" style="font-weight: bold;">&nbsp;&nbsp;增加&nbsp;&nbsp;</a> <a class="btn btn-danger btn-sm"
-			style="font-weight: bold;" onclick="index.startCluster()">&nbsp;&nbsp;启动&nbsp;&nbsp;</a>
+		<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#insertDia" data-backdrop="static" style="font-weight: bold;">&nbsp;&nbsp;增加&nbsp;&nbsp;</a> 
+		<a class="btn btn-success btn-sm" style="font-weight: bold;" onclick="index.startCluster()">&nbsp;&nbsp;启动&nbsp;&nbsp;</a>
+		<a class="btn btn-danger btn-sm" style="font-weight: bold;" onclick="index.deleteAllInfo()">&nbsp;&nbsp;删除&nbsp;&nbsp;</a>
 	</div>
 </div>
 
@@ -39,6 +40,7 @@
 <table class="table table-striped table-bordered responsive">
 	<thead>
 		<tr>
+			<th><input type="checkbox" id="checkAll" onclick="common.checkAllBtn()"></th>
 			<th>类别</th>
 			<th>影视剧名称</th>
 			<th>导演</th>
@@ -52,6 +54,7 @@
 	<tbody>
 		<c:forEach items="${infos}" var="infos">
 			<tr>
+				<td><input type="checkbox" name="checkbox_id" value="${infos.filmId }"></td>
 				<td>${infos.clustertype}</td>
 				<td>${infos.filmName }</td>
 				<td>${infos.direct }</td>

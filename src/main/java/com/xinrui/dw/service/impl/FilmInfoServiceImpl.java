@@ -115,4 +115,10 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 		}
 		return false;
 	}
+
+	// 删除所有信息
+	public boolean deleteAllInfo(String ids)
+	{
+		return false;
+	}
 }
