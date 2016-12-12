@@ -22,9 +22,9 @@ var index =
 		{
 			return '/demoweb/index/startCluster'
 		},
-		deleteAllInfo : function()
+		deleteInfoByIds : function()
 		{
-			return '/demoweb/index/deleteAllInfo'
+			return '/demoweb/index/deleteInfoByIds'
 		}
 	},
 	// 初始化页面
@@ -45,12 +45,12 @@ var index =
 				url : index.url.insertTab(),
 				data :
 				{
-					filmName : $('#filmName').val(),
-					direct : $('#direct').val(),
-					protagonist : $('#protagonist').val(),
-					type : $('#type').val(),
-					district : $('#district').val(),
-					language : $('#language').val(),
+					filmName : $('#filmName').val().trim(),
+					direct : $('#direct').val().trim(),
+					protagonist : $('#protagonist').val().trim(),
+					type : $('#type').val().trim(),
+					district : $('#district').val().trim(),
+					language : $('#language').val().trim(),
 					currentPage : $('#currentPage').val()
 				},
 				beforeSend : function()
@@ -72,12 +72,13 @@ var index =
 			});
 		})
 	},
+	// 搜索
 	searchByClusterType : function()
 	{
 		common.loadingBlankBody(index.url.clusterTab(),
 		{
 			currentPage : $('#currentPage').val(),
-			clustertype : $('#clustertype').val()
+			clustertype : $('#clustertype').val().trim()
 		})
 	},
 	startCluster : function()
@@ -151,14 +152,28 @@ var index =
 			clustertype : $('#clustertype').val()
 		})
 	},
-	// 删除所有信息
-	deleteAllInfo : function()
+	// 通过一组id删除所有信息
+	deleteInfoByIds : function()
 	{
-		common.loadingBlankBody(index.url.deleteAllInfo(),
+		$.ajax(
 		{
-			ids : common.batchOperate(),
-			clustertype : $('#clustertype').val(),
-			currentPage : $('#currentPage').val()
-		})
+			dataType : "json",
+			type : "POST",
+			url : index.url.deleteInfoByIds(),
+			data :
+			{
+				ids : common.batchOperate(),
+				clustertype : $('#clustertype').val(),
+				currentPage : $('#currentPage').val()
+			},
+			success : function(result)
+			{
+				index.isSuccess(result.data.url, result.data.code, result.data.message,
+				{
+					currentPage : $('#currentPage').val(),
+					clustertype : $('#clustertype').val()
+				})
+			},
+		});
 	}
 }

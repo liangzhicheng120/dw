@@ -132,12 +132,12 @@ public class IndexController
 		}
 	}
 
-	@RequestMapping(value = "/index/deleteAllInfo", method = RequestMethod.POST, produces =
+	@RequestMapping(value = "/index/deleteInfoByIds", method = RequestMethod.POST, produces =
 	{ "application/json;charset=UTF-8" })
 	@ResponseBody
-	public ExecutionResult<Url> deleteAllInfo(String ids) throws IOException
+	public ExecutionResult<Url> deleteInfoByIds(String ids) throws IOException
 	{
-		boolean isSuccess = filmService.deleteAllInfo(ids);
+		boolean isSuccess = filmService.deleteInfoByIds(ids);
 		Url url = null;
 		// 批量删除成功
 		if (isSuccess)

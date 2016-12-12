@@ -2,6 +2,7 @@ package com.xinrui.dw.service.impl;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,12 +91,6 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 		return false;
 	}
 
-	// 查询所有信息
-	public List<FilmInfo> queryAllFilmInfo()
-	{
-		return null;
-	}
-
 	// 启动聚类脚本
 	public boolean startCluster() throws IOException
 	{
@@ -116,9 +111,23 @@ public class FilmInfoServiceImpl implements IFilmInfoService
 		return false;
 	}
 
-	// 删除所有信息
-	public boolean deleteAllInfo(String ids)
+	// 通过一组id删除所有信息
+	public boolean deleteInfoByIds(String ids)
 	{
+		if (StringUtils.isNotEmpty(ids))
+		{
+			List<Integer> idsList = new ArrayList<Integer>();
+			for (String id : ids.trim().split(","))
+			{
+				idsList.add(Integer.valueOf(id));
+			}
+			int row = this.filmInfoDao.deleteInfoByIds(idsList);
+			if (row != 0)
+			{
+				return true;
+			}
+		}
 		return false;
 	}
+
 }

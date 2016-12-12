@@ -26,12 +26,9 @@ public interface IFilmInfoService
 	public boolean insertFilmInfo(String filmName, String direct, String protagonist, String type, String district,
 			String language);
 
-	// 查询所有信息
-	public List<FilmInfo> queryAllFilmInfo();
-
 	// 启动聚类脚本
 	public boolean startCluster() throws IOException;
 
-	// 全部删除
-	public boolean deleteAllInfo(String ids);
+	// 通过一组id删除数据
+	public boolean deleteInfoByIds(String ids);
 }

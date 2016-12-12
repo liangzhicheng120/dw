@@ -74,7 +74,7 @@
 	</delete>
 
 
-	<delete id="deleteAllInfo" parameterType="java.util.List">
+	<delete id="deleteInfoByIds" parameterType="java.util.List">
 		DELETE
 		FROM
 		mydemo.clustertab
@@ -82,7 +82,7 @@
 		filmId
 		IN
 		(
-		<foreach collection="list" item="id" separator=",">
+		<foreach collection="list" item="filmId" separator=",">
 			#{filmId}
 		</foreach>
 		)

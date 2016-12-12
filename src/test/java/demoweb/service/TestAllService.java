@@ -1,5 +1,9 @@
 package demoweb.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -17,4 +21,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestAllService
 {
 
+	@Test
+	public void stringToList()
+	{
+		String ids = "1,2,3,4";
+		List<Integer> idsList = new ArrayList<Integer>();
+		for (String id : ids.trim().split(","))
+		{
+			idsList.add(Integer.valueOf(id));
+		}
+		for (Integer integer : idsList)
+		{
+			System.out.println(integer);
+		}
+	}
 }

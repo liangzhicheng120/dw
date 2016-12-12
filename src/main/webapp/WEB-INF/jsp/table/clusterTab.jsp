@@ -32,7 +32,7 @@
 	<div class="col-md-3">
 		<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#insertDia" data-backdrop="static" style="font-weight: bold;">&nbsp;&nbsp;增加&nbsp;&nbsp;</a> 
 		<a class="btn btn-success btn-sm" style="font-weight: bold;" onclick="index.startCluster()">&nbsp;&nbsp;启动&nbsp;&nbsp;</a>
-		<a class="btn btn-danger btn-sm" style="font-weight: bold;" onclick="index.deleteAllInfo()">&nbsp;&nbsp;删除&nbsp;&nbsp;</a>
+		<a class="btn btn-danger btn-sm" style="font-weight: bold;" onclick="index.deleteInfoByIds()">&nbsp;&nbsp;删除&nbsp;&nbsp;</a>
 	</div>
 </div>
 
