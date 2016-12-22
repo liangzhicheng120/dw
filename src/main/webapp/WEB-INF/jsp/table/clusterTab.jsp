@@ -25,7 +25,7 @@
 	</div>
 	<div class="col-md-3">
 		<div class="input-group input-group-sm">
-			<input type="text" class="form-control" placeholder="搜索ID" aria-describedby="basic-addon1" id="clustertype" value="${clustertype }"> <span class="input-group-addon"
+			<input type="text" class="form-control" placeholder="搜索类别" aria-describedby="basic-addon1" id="clustertype" value="${clustertype }"> <span class="input-group-addon"
 				onclick="index.searchByClusterType()"><i class="glyphicon glyphicon-search"></i></span>
 		</div>
 	</div>
@@ -44,7 +44,7 @@
 			<th>类别</th>
 			<th>影视剧名称</th>
 			<th>导演</th>
-			<th>主演</th>
+			<th>简介</th>
 			<th>类型</th>
 			<th>地区</th>
 			<th>语言</th>
@@ -58,7 +58,7 @@
 				<td>${infos.clustertype}</td>
 				<td>${infos.filmName }</td>
 				<td>${infos.direct }</td>
-				<td>${infos.protagonist }</td>
+				<td style="width: 1000px;">${infos.protagonist }</td>
 				<td>${infos.type }</td>
 				<td>${infos.district }</td>
 				<td>${infos.language }</td>

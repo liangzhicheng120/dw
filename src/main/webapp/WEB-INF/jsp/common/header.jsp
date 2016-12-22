@@ -8,7 +8,7 @@
 		<!-- user dropdown starts -->
 		<div class="btn-group pull-right">
 			<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-				<i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> ${sessionScope.ADMIN }</span> <span class="caret"></span>
+				<i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> ADMIN</span> <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
 				<li><a href="exit.html">安全退出</a></li>
